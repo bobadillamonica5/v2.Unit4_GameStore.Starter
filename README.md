@@ -29,3 +29,4 @@ CREATE DATABASE gamestore;
 
 ## Objectives
 
+1. Test
