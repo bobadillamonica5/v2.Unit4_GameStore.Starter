@@ -31,46 +31,18 @@ router.get('/:id', async (req, res, next) => {
 
 // POST - /api/video-games - create a new video game
 router.patch('/', async (req, res, next) => {
-    try {
-        const videoGame = await createVideoGame(req.body);
-        const existingVideoGame = await getVideoGameById(videoGame.id);
-        if (existingVideoGame) {
-            res.send(existingVideoGame);
-        } else {
-            const newVideoGame = await createVideoGame(req.body);
-            if(newVideoGame) {
-                res.send(newVideoGame);
-            } else {
-                next({
-                    name: 'VideoGameCreationError',
-                    message: 'There was an error creating the video game.'
-                });
-            }
-        }
-    } catch (error) {
-        next(error);
-    }
+    // LOGIC GOES HERE 
 });
 
 
 // PUT - /api/video-games/:id - update a single video game by id
 router.put('/:id', async (req, res, next) => {
-    try {
-        const videoGame = await updateVideoGame(REPLACE_ME, REPLACE_ME);
-        res.send(videoGame);
-    } catch (error) {
-        next(error);
-    }
+    // LOGIC GOES HERE 
 });
 
 // DELETE - /api/video-games/:id - delete a single video game by id
 router.delete('/:id', async (req, res, next) => {
-    try {
-        const videoGame = await deleteVideoGame(req.params.id);
-        res.send(videoGame);
-    } catch (error) {
-        next(error);
-    }
+    // LOGIC GOES HERE
 });
 
 module.exports = router;
