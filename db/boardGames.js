@@ -5,7 +5,7 @@ const util = require('util');
 async function getAllBoardGames() {
     try {
         const { rows } = await client.query(`
-            SELECT * FROM board_games;
+            SELECT * FROM boardgames;
         `);
         return rows;
     } catch (err) {
@@ -17,7 +17,7 @@ async function getAllBoardGames() {
 async function getBoardGameById(id) {
     try {
         const { rows: [boardGame] } = await client.query(`
-            SELECT * FROM board_games
+            SELECT * FROM boardgames
             WHERE id = $1;
         `, [id]);
         return boardGame;
@@ -32,7 +32,7 @@ async function createBoardGame(body) {
     try {
         const { rows: [boardGame] } = await client.query(`
 
-            INSERT INTO board_games(name, description, price, "inStock", "isPopular", "imgUrl")
+            INSERT INTO boardgames(name, description, price, "inStock", "isPopular", "imgUrl")
             VALUES($1, $2, $3, $4, $5, $6)
             RETURNING *;
         `, [name, description, price, inStock, isPopular, imgUrl]);
@@ -50,7 +50,7 @@ async function updateBoardGame(id, fields = {}) {
     }
     try {
         const { rows: [boardGame] } = await client.query(`
-            UPDATE board_games
+            UPDATE boardgames
             SET ${setString}
             WHERE id=${id}
             RETURNING *;
@@ -65,7 +65,7 @@ async function updateBoardGame(id, fields = {}) {
 async function deleteBoardGame(id) {
     try {
         const { rows: [boardGame] } = await client.query(`
-            DELETE FROM board_games
+            DELETE FROM boardgames
             WHERE id=$1
             RETURNING *;
         `, [id]);
