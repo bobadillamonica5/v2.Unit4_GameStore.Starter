@@ -17,6 +17,8 @@ async function dropTables() {
 async function createTables() {
     try {
         console.log('Building All Tables...');
+        // id is generated for us bc its the serial primary id
+        // not null = required
         await client.query(`
       CREATE TABLE videoGames (
         id SERIAL PRIMARY KEY,

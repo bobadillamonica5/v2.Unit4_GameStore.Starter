@@ -18,6 +18,9 @@ app.use(cors());
 const client = require('./db/client');
 client.connect();
 
+// define route as '/' and establish a request handler
+    // request handler is a callback function
+        // 2 args: request (i.e., headers, body) + response (i.e., send back data, obj, etc)
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
